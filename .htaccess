@@ -1,0 +1,4 @@
+Options +FollowSymLinks
+Options +Indexes
+RewriteEngine On
+RewriteRule ^([^/\.]+)/?$ viewer.php?id=$1 [L]
