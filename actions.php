@@ -10,11 +10,11 @@ if($action=='login'){
 	$user=$_POST['user'];
 	$pass=$_POST['pass'];
 	$info=$ad->login($user,$pass);
-	if($info){
+	if(!$info['error']){
 		@$_SESSION['stuff']['user']=$info;
 		echo "success";
 	}else{
-		echo "Bad user or password";
+		echo $info['error'];
 	}
 }
 

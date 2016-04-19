@@ -1,8 +1,9 @@
 <?php
 $kb = new kbdb($dbconfig);
+print_r($_SESSION);
 ?>
 <head>
-<title><?php echo $mastertitle;?></title>
+<title><?php echo $mastertitle ?></title>
 <script src="jquery-1.12.3.min.js" ></script>
 <script src="./jquery-ui/jquery-ui.min.js" ></script>
 <script src="login.js" ></script>
@@ -12,7 +13,13 @@ $kb = new kbdb($dbconfig);
 <body>
 <div id="headwrap">
 	<div id="mainhead">
-		<h3><a class='homelink' href='.'><?php echo $mastertitle;?></a></h3>
+		<h3><a class='homelink' href='.'>
+										<?php
+											echo $mastertitle;
+											if($tagline){
+												echo " (".$tagline.")";
+											}
+										?>	</a></h3>
 		<div id="mainnav">
 			<ul id='navlist'>
 				<li><a href='#'>Home</a></li>
