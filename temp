@@ -1,0 +1,12 @@
+ if($items=="racks"){
+        $q="select rack.name,rack.id, count(rackservermap.id) as x from rack
+            left join rackservermap on rack.id = rackservermap.rackid
+            group by rack.name
+            order by rack.name asc";
+        $racks=$sqlite->search($q);
+        if($racks){
+            foreach($racks as $rack){
+                echo "<a href='./view.php?type=rack&id=".$rack['id']."' class='floatbox'>".$rack['name']." [".$rack['x']."]</a>";
+            }
+        }
+    }

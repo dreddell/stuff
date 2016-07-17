@@ -1,5 +1,28 @@
+body{padding:0xp;margin:0px;}
 a.homelink{text-decoration:none;border:none}
-#navlist {list-style:none}
-#navlist li{display:inline;margin-right:15px;}
-#mainbodlayout{width:100%}
+#mainbodlayout{width:100%;padding:10px;}
 #logdiv{display:none}
+#searchbox {padding:7px;color:#444;border:3px solid #aaa;width:300px;color:darkgreen}
+#viewbox{padding:10px;padding-left:30px;}
+#viewbox h2{margin:0px}
+.floatbox{display:inline-block;padding:3px;border:1px solid #777;
+    border-radius:5px;background:#eee;color:#444;text-decoration:none;background:#eee;margin-right:5px;margin-bottom:5px;}
+.floatbox a{text-decoration:none;color:#444;}
+table.stats{border:2px solid #fff;padding:3px;border-collapse: collapse}
+table th.stats th{background:#dedede;color:#666;text-align:left;padding-right:5px;padding-left:5px;border-bottom:2px solid #fff}
+table.stats td{padding-left:5px;color:#666}
+td{vertical-align:top}
+#mainhead{background:#555;color:#fff;padding:8px;margin-bottom:10px;position:relative;border-bottom:12px solid #eee}
+#mainhead a{color:#fff;text-decoration:none;}
+#mainhead #navlist li{display:inline;margin-right:8px;list-style:none}
+#mainhead #navlist li a{padding:8px;background:#eee;color:#444}
+#mainhead #navlist li a:hover{background:#000;color:#fff;cursor:pointer;padding:7px;border:1px solid #eee}
+
+#mainhead img.logo{height:40px;float:right;right:10px;margin-right:10px;}
+#catnav li{list-style:none;display:inline-block;text-align:center;width:auto;padding:15px;margin-right:20px;background:#eee;border:2px solid #aaa}
+#catnav img{margin-right:10px;vertical-align:middle;height:30px;opacity:.8}
+#catnav li a{text-decoration:none;color:#444}
+span.env{font-size:.8em}
+span.prod{color:red}
+span.stag{color:orange}
+span.test,span.development{color:green}

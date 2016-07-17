@@ -68,6 +68,49 @@ class actived
 }
 
 
+class clustodb
+{
+	function __construct($config) {
+		$this->config=$config;
+	}
+
+	public function search($q){
+		$dsn = "pgsql:host=".$this->config['host'].";port=".$this->config['port'].";dbname=".$this->config['database'].";user=".$this->config['dbuser'].";password=".$this->config['dbpass'];
+		$conn = new PDO($dsn);
+		$statement = $conn->query($q);
+		$ret = array();
+		while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+			$ret[]=$row;
+		}
+		return $ret;
+	}
+
+
+
+}
+
+
+class sqlite
+{
+	function __construct($config){
+		$this->config=$config;
+	}
+
+	public function search($q){
+		$ret=array();
+		$hdl=new SQLite3($this->config['filename']);
+		$result = $hdl->query($q);
+		if($result) {
+			while ($row = @$result->fetchArray(SQLITE3_ASSOC)) {
+				$ret[] = $row;
+			}
+		}
+		$hdl->close();
+		return $ret;
+
+	}
+
+}
 
 
 
