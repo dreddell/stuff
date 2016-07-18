@@ -28,6 +28,7 @@ $sqlitetables["server"]['cols'][]=array('name'=>'cores','type'=>'INTEGER');
 $sqlitetables["server"]['cols'][]=array('name'=>'cpus','type'=>'INTEGER');
 $sqlitetables["server"]['cols'][]=array('name'=>'env','type'=>'TEXT');
 $sqlitetables["server"]['cols'][]=array('name'=>'tengb','type'=>'BOOL');
+$sqlitetables["server"]['cols'][]=array('name'=>'raid','type'=>'TEXT');
 
 
 $sqlitetables["pool"]["name"]="pool";
@@ -53,7 +54,7 @@ $sqlitetables["rackservermap"]['cols'][]=array('name'=>'ru','type'=>'INTEGER NOT
 //Create Server Table
 foreach($sqlitetables as $table){
     $q="DROP TABLE IF EXISTS '".$table['name']."';";
-    $sqlite->search($q);
+    $sqlite->exec($q);
     $q="CREATE TABLE '".$table['name']."' (";
     foreach($table['cols'] as $col){
         $q.="'".$col['name']."'  ".$col['type'].",";
@@ -61,12 +62,12 @@ foreach($sqlitetables as $table){
     $q=rml($q);
     $q.=");";
     //echo "<hr>$q";
-    $sqlite->search($q);
+    $sqlite->exec($q);
 }
 
 foreach($sqlitetables as $table) {
     $q = "delete from '" . $table['name'] . "';";
-    $sqlite->search($q);
+    $sqlite->exec($q);
 }
 
 
@@ -77,7 +78,7 @@ left join
 entities on entity_attrs.entity_id = entities.entity_id
 where entities.type = 'server'
 
-order by entities.name asc");
+order by entities.name asc;");
 
 $servers=array();
 foreach($rawservers as $server){
@@ -98,7 +99,7 @@ foreach($rawservers as $server){
     }
     $servers[$server['name']]['attribs'][$server['key']."_".$server['subkey']][$server['number']] = $val;
 }
-
+$insq="";
 
 foreach($servers as $server){
     $id=$server['id'];
@@ -121,27 +122,29 @@ foreach($servers as $server){
     $proc=@array_pop($server['attribs']['processor_version']);
     $cores=@array_pop($server['attribs']['system_cpucorecount']);
     $cpus=@array_pop($server['attribs']['system_cpucount']);
+    $raid=@array_pop($server['attribs']['system_diskconfig']);
+
     if(@$server['attribs']['port-nic-sfp_connection']){
         $tengb=1;
     }else{
         $tengb=0;
     }
-    if($name=="s0439"){
-
+    if($name=="s0200"){
         echo "<pre>";
         print_r($server);
         echo "</pre>";
     }
 
 
-    $insq="insert into server
-            ('id','name','serial','dracip','model','chef_role','aws_ami','aws_instance_id','centosver','drivetype','drivecount','systemip','memory','cores','proc','cpus','tengb')
+    $insq.="insert into server
+            ('id','name','serial','dracip','model','chef_role','aws_ami','aws_instance_id','centosver','drivetype','drivecount','systemip','memory','cores','proc','cpus','tengb','raid')
             values
-            ('$id','$name','$serial','$dracip','$model','$chefrole','$aws_ami','$aws_instance_id','$centosver','$drivetype','$drivecount','$systemip','$memory','$cores','$proc','$cpus','$tengb')";
-    $sqlite->search($insq);
+            ('$id','$name','$serial','$dracip','$model','$chefrole','$aws_ami','$aws_instance_id','$centosver','$drivetype','$drivecount','$systemip','$memory','$cores','$proc','$cpus','$tengb','$raid');";
+
 }
 
 
+$sqlite->exec($insq);
 
 
 $enttypemap=array();
@@ -152,7 +155,7 @@ $types=array();
 $rawpools=$clustodb->search("select * from entities where type = 'pool'");
 foreach($rawpools as $pool){
     $q="insert into pool ('id','name','type') values (".$pool['entity_id'].",'".$pool['name']."','".$pool['driver']."');";
-    $sqlite->search($q);
+    $sqlite->exec($q);
 }
 
 $q="
@@ -180,7 +183,7 @@ foreach($poolmaps as $map){
     $poolid=$map['poolid'];
     $serverid=$map['serverid'];
     $q="insert into poolservermap (poolid,serverid) values ('$poolid','$serverid')";
-    $sqlite->search($q);
+    $sqlite->exec($q);
 }
 
 $rawracks=$clustodb->search("select * from entities where driver = 'basicrack'");
@@ -188,7 +191,7 @@ foreach($rawracks as $rack){
     $rackid=$rack['entity_id'];
     $rackname=$rack['name'];
     $q="insert into rack (id,name) values ($rackid,'$rackname')";;
-    $sqlite->search($q);
+    $sqlite->exec($q);
 }
 
 $rackmapq="
@@ -219,7 +222,7 @@ foreach($rackmaps as $map){
     $ru=$map['ru'];
     $q="insert into rackservermap (rackid,serverid,ru) values ($rackid,$serverid,$ru)";
     //echo $q;
-    $sqlite->search($q);
+    $sqlite->exec($q);
 }
 
 
@@ -230,10 +233,10 @@ foreach($envs as $env) {
                 select poolservermap.serverid from pool
                 left join poolservermap on pool.id = poolservermap.poolid
                 where pool.name = '$env')";
-    $sqlite->search($updateq);
+    $sqlite->exec($updateq);
 }
 
-
+echo "Import completed";
 
 
 

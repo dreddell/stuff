@@ -29,6 +29,7 @@ $filteroptions['server']['Cores']=array('disp'=>'Cores',      'tab'=>'server',  
 $filteroptions['server']['Pool']=array('disp'=>'Pool',    'tab'=>'pool',    'col'=>'name', 'tab2'=>'poolservermap',    'col2'=>'poolid' );
 $filteroptions['server']['Type']=array('disp'=>'Type',      'tab'=>'s2',    'col'=>'servertype');
 $filteroptions['server']['Rack']=array('disp'=>'Rack',      'tab'=>'rack',    'col'=>'name');
+$filteroptions['server']['Raid']=array('disp'=>'Raid',      'tab'=>'server',    'col'=>'raid');
 
 $displayoptions['server']['name']=array('disp'=>'Name',    'tab'=>'server',    'col'=>'name');
 $displayoptions['server']['Serial']=array('disp'=>'Serial',    'tab'=>'server',    'col'=>'serial');
@@ -44,7 +45,7 @@ $displayoptions['server']['Proc']=array('disp'=>'Proc',      'tab'=>'server',   
 $displayoptions['server']['Cores']=array('disp'=>'Cores',      'tab'=>'server',    'col'=>'cores');
 $displayoptions['server']['Type']=array('disp'=>'Type',      'tab'=>'s2',    'col'=>'servertype');
 $displayoptions['server']['Rack']=array('disp'=>'Rack',      'tab'=>'rack',    'col'=>'name');
-
+$displayoptions['server']['Raid']=array('disp'=>'Raid',      'tab'=>'server',    'col'=>'raid');
 
 $sqlitetables["server"]['cols'][]=array('name'=>'cpus','type'=>'INTEGER');
 $sqlitetables["server"]['cols'][]=array('name'=>'env','type'=>'TEXT');

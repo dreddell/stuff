@@ -15,9 +15,9 @@ if($rackinfo) {
     echo "<table><tr><td width='350px'>";
     echo "<h3 style='margin:0px'>Servers</h3>";
     if($rackservers){
-        echo "<table>";
+        echo "<table class='datatabnopage stripe hove'r>";
         $rackpools=array();
-        echo "<tr><th>Server Name</th><th>Model</th><th>RU</th></tr>";
+        echo "<thead><tr><th>Server Name</th><th>Model</th><th>RU</th></tr></thead><tbody>";
         foreach($rackservers as $server){
             echo "<tr>";
             echo "<td><a href='./view.php?type=server&id=".$server['serverid']."'>".$server['servername']."</a></td>";
@@ -31,8 +31,8 @@ if($rackinfo) {
                 @$rackpools[$pool['name']]['cnt']++;
             }
         }
-        echo "</table>";
-        echo "</td><td width='400px'>";
+        echo "</tbody></table>";
+        echo "</td><td style='padding-left:20px;width:300px;'>";
         echo "<h3 style='margin:0px'>Pools</h3>";
         if($rackpools){
             foreach($rackpools as $pool){

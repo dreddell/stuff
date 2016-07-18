@@ -107,8 +107,12 @@ class sqlite
 		}
 		$hdl->close();
 		return $ret;
-
 	}
+	public function exec($q){
+		$hdl=new SQLite3($this->config['filename']);
+		$hdl->exec($q);
+	}
+
 
 }
 

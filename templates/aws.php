@@ -6,12 +6,13 @@ if($awsservers) {
     echo "<img src='./images/icons/cloud.png' style='opacity:.7;float:left;margin-right:15px'/>";
     echo "<div style='padding-left:70px'>";
     echo "<h2>AWS Servers</h2>";
-    echo "<table><tr><td width='350px'>";
+    echo "<table class='datatab stripe hover'><tr><td width='350px'>";
     echo "<h3 style='margin:0px'>Servers</h3>";
     if($awsservers){
         echo "<table>";
         $rackpools=array();
-        echo "<tr><th>Server Name</th><th>AMI</th><th>Instance ID</th></tr>";
+        echo "<tr><thead><th>Server Name</th><th>AMI</th><th>Instance ID</th></thead></tr>";
+        echo "<tbody>";
         foreach($awsservers as $server){
             echo "<tr>";
             echo "<td><a href='./view.php?type=server&id=".$server['id']."'>".$server['name']."</a></td>";
@@ -26,6 +27,7 @@ if($awsservers) {
                 @$rackpools[$pool['name']]['cnt']++;
             }
         }
+        echo "</tbody>";
         echo "</table>";
         echo "</td><td width='400px'>";
         echo "<h3 style='margin:0px'>Pools</h3>";

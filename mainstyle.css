@@ -14,11 +14,12 @@ table.stats td{padding-left:5px;color:#666}
 td{vertical-align:top}
 #mainhead{background:#555;color:#fff;padding:8px;margin-bottom:10px;position:relative;border-bottom:12px solid #eee}
 #mainhead a{color:#fff;text-decoration:none;}
+#mainhead #navlist{padding-left:140px;}
 #mainhead #navlist li{display:inline;margin-right:8px;list-style:none}
 #mainhead #navlist li a{padding:8px;background:#eee;color:#444}
 #mainhead #navlist li a:hover{background:#000;color:#fff;cursor:pointer;padding:7px;border:1px solid #eee}
 
-#mainhead img.logo{height:40px;float:right;right:10px;margin-right:10px;}
+#mainhead img.logo{height:40px;margin-right:10px;}
 #catnav li{list-style:none;display:inline-block;text-align:center;width:auto;padding:15px;margin-right:20px;background:#eee;border:2px solid #aaa}
 #catnav img{margin-right:10px;vertical-align:middle;height:30px;opacity:.8}
 #catnav li a{text-decoration:none;color:#444}
@@ -26,3 +27,5 @@ span.env{font-size:.8em}
 span.prod{color:red}
 span.stag{color:orange}
 span.test,span.development{color:green}
+fieldset{border:1px solid #aaa}
+table.datatab th{text-align:left}

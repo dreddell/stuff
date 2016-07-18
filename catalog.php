@@ -102,11 +102,3 @@ function debug($ray){
     echo "</pre>";
 }
 ?>
-<script>
-
-$('.datatab').DataTable({searching: false, paging: false});
-
-</script>
-<style>
-    table.datatab th{text-align:left}
-</style>

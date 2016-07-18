@@ -29,7 +29,7 @@ if($type=="server") {
     $query.=" left join
                 (
                 select id,
-                (case when server.name like 's%' then 'pysical' when server.name like 'e%' then 'aws' else 'unknown' end) AS servertype
+                (case when server.name like 's%' then 'physical' when server.name like 'e%' then 'aws' else 'unknown' end) AS servertype
                 from server
                 ) as s2 on s2.id = server.id ";
     $query.="LEFT OUTER JOIN rackservermap on rackservermap.serverid = server.id
