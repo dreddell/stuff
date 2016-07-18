@@ -114,7 +114,7 @@ LEFT JOIN rack on rackservermap.rackid = rack.id ";
         }
     }
 
-    echo "<br /><hr>" . $query;
+    //echo "<br /><hr>" . $query;
     //debug($matches);
     echo "<br /><br /><br /><br />";
 }

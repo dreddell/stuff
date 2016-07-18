@@ -1,6 +1,6 @@
 <?php
 
-$mastertitle="Cluster";
+$mastertitle="Clusto Catalog";
 $tagline="Inventory Reporting";
 $userlogin=false;
 

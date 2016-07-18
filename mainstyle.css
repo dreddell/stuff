@@ -28,4 +28,4 @@ span.prod{color:red}
 span.stag{color:orange}
 span.test,span.development{color:green}
 fieldset{border:1px solid #aaa}
-table.datatab th{text-align:left}
+table.datatab th,table.datatabsearch,table.datatabnopage th th{text-align:left}

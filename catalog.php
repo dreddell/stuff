@@ -52,7 +52,7 @@ if($items){
                 $poolenvs[$pool['env']]=$pool['env'];
                 //echo "<a href='./view.php?type=pool&id=".$pool['id']."' class='floatbox'>".$pool['name']." [".$pool['x']."]</a>";
             }
-            echo "<table class='datatab stripe hover'>";
+            echo "<table class='datatabsearch stripe hover'>";
             echo "<thead><tr>";
             echo "<th>Name</th>";
             foreach($poolenvs as $env){
@@ -64,11 +64,7 @@ if($items){
                 echo "<tr>";
                 echo "<td><a href='./view.php?type=pool&id=$id' >".$pool['name']."</a></td>";
                 foreach($poolenvs as $env){
-                    $envcount=(@$pool[$env]/2);
-                    if($envcount<1){
-                        $envcount=0;
-                    }
-
+                    $envcount=@$pool[$env];
                     echo "<td>".$envcount."</td>";
                 }
                 echo "</tr>";

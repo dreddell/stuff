@@ -20,6 +20,7 @@ $( document ).ready(function() {
 
 	$('.datatab').DataTable({searching: false, paging: true});
 	$('.datatabnopage').DataTable({searching: false, paging: false});
+	$('.datatabsearch').DataTable({searching: true, paging: true});
 	$( "#searchbox" ).autocomplete({
 		source: "./searchjax.php",
 		minLength: 3,//search after two characters
