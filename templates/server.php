@@ -21,7 +21,7 @@ if($serverinfo){
     <img style='vertical-align:middle;height:30px' src='./images/checkmklogo.png' /></a><br /><br />";
     echo "<table><tr><td style='width:30%;'>";
     echo "<h3 style='border-bottom:1px solid #aaa;margin:0px'>Server Attributes:</h3>";
-    echo "<table class='stats'>";
+    echo "<table class='stats zebra'><tbody>";
     if($serverinfo['servertype']=='aws'){
         $fields=array('aws_instance_id','aws_ami');
     }else {
@@ -33,7 +33,6 @@ if($serverinfo){
     }
     $common=array('systemip','chef_role','centosver','env');
     $fields=array_merge($fields,$common);
-
     foreach($serverinfo as $k=>$server){
         if(in_array($k,$fields)) {
             $displayoptions['server']['name']=array('disp'=>'Name',    'tab'=>'server',    'col'=>'name');
@@ -45,10 +44,20 @@ if($serverinfo){
             if($k=='dracip'){
                 $server="<a target='_blank' href='https://$server'>$server</a>";
             }
-            echo "<tr><th>".$disp."</th><td>" . $server . "</td></tr>";
+            if($k=='memory'){
+                $server.=" GB";
+            }
+            if($k=='tengb'){
+                if($server===1){
+                    $server="Yes";
+                }else{
+                    $server="No";
+                }
+            }
+            echo "<tr><th style='text-align:right'>".$disp."</th><td>" . $server . "</td></tr>";
         }
     }
-    echo "</table>";
+    echo "</tbody></table>";
 
     echo "</td><td style='width:30%;padding-left:20px;'>";
     if($serverpools){

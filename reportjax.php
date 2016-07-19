@@ -70,7 +70,7 @@ LEFT JOIN rack on rackservermap.rackid = rack.id ";
         echo "</div>";
         echo "<div id='postsaverptdiag'></div>";
 
-        echo "<p style='margin-bottom:2px;margin-top:0px;'>" . count($matches) . " matches found";
+        //echo "<p style='margin-bottom:2px;margin-top:0px;'>" . count($matches) . " matches found";
         /***
         echo "
                 &nbsp;<input id='btnexportcsv' type='button' onclick=\"rptexport('csv');\" value='Export CSV' />
@@ -92,8 +92,8 @@ LEFT JOIN rack on rackservermap.rackid = rack.id ";
             echo "<tr>";
             foreach ($displayoptions['server'] as $option) {
                 if (isset($selectedcols[$option['tab'] . "-" . $option['col']])) {
-                    if($option['disp']=='Peakname'){
-                        echo "<td><a target='_blank' href='./index.php?r=device/view&peakname=".$match[$option['disp']]."'>" . $match[$option['disp']] . "</a></td>";
+                    if($option['disp']=='Name'){
+                        echo "<td><a target='_blank' href='./view.php?type=server&id=".$match['id']."'>" . $match[$option['disp']] . "</a></td>";
                     }else {
                         echo "<td>" . $match[$option['disp']] . "</td>";
                     }

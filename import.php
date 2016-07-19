@@ -129,10 +129,10 @@ foreach($servers as $server){
     }else{
         $tengb=0;
     }
-    if($name=="s0200"){
-        echo "<pre>";
-        print_r($server);
-        echo "</pre>";
+    if($name=="e0074"){
+        //echo "<pre>";
+        //print_r($server);
+        //echo "</pre>";
     }
 
 
