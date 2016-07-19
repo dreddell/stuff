@@ -2,7 +2,7 @@
 include 'header.php';
 
 
-$types=['pool','server','rack','aws'];
+$types=array('pool','server','rack','aws');
 
 $type=$_GET['type'];
 $id=@$_GET['id'];
