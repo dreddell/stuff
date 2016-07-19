@@ -10,7 +10,7 @@ $clustodbconfig['dbuser']='clusto';
 $clustodbconfig['dbpass']='password';
 $clustodbconfig['database']='clusto';
 
-$sqlite['filename']="/Applications/XAMPP/xamppfiles/htdocs/cluster/cluster.sqlite";
+$sqlite['filename']="./cluster.sqlite";
 $sqlite['dbname']="cluster";
 
 $filteroptions=array();
@@ -51,6 +51,4 @@ $displayoptions['server']['Env']=array('disp'=>'Env',      'tab'=>'server',    '
 $displayoptions['server']['10GB']=array('disp'=>'10GB',      'tab'=>'server',    'col'=>'tengb');
 
 
-$sqlitetables["server"]['cols'][]=array('name'=>'cpus','type'=>'INTEGER');
-$sqlitetables["server"]['cols'][]=array('name'=>'env','type'=>'TEXT');
-$sqlitetables["server"]['cols'][]=array('name'=>'tengb','type'=>'BOOL');
+
